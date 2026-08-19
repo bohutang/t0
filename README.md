@@ -32,4 +32,14 @@ Client ISP, public IP, proxy software, proxy address, DNS path, and traceroute. 
 
 ## Latest numbers
 
-See [`bench/results/`](bench/results/).
+Run `20260819T034759Z` on a single Darwin/arm64 laptop over HTTPS (local forward proxy; path omitted).
+
+| Item | GitHub | Cursor Origin |
+| --- | ---: | ---: |
+| First push (seed) | 3.234s | 3.526s |
+| Cold clone (median, n=3) | 2.174s | 3.485s |
+| Incremental fetch | 1.794s | 3.329s |
+| Serial push x20 (median) | 2.929s | 2.728s |
+| 4 concurrent clones (wall) | 2.176s | 3.625s |
+
+Origin was slightly faster on tiny serial pushes; GitHub was faster on clone/fetch. This is client-path latency, not Continuity cluster throughput. Full samples: [`bench/results/20260819T034759Z.md`](bench/results/20260819T034759Z.md).
